@@ -1,0 +1,5 @@
+- name: Inspect eitaa-cli
+  run: |
+    pip install -U eitaa-cli
+    pip show eitaa-cli
+    python -c "import pkgutil; print([m.name for m in pkgutil.iter_modules() if 'eitaa' in m.name.lower()])"
