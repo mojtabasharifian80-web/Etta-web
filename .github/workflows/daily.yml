@@ -2,7 +2,7 @@ name: Eitaa Every 15 Minutes
 
 on:
   schedule:
-    - cron: '*/15 * * * *'   # هر ۱۵ دقیقه یک‌بار
+    - cron: '*/10 * * * *'   # هر ۱۵ دقیقه یک‌بار
   workflow_dispatch:
 
 jobs:
