@@ -1,0 +1,27 @@
+name: Eitaa Every 15 Minutes
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # هر ۱۵ دقیقه یک‌بار
+  workflow_dispatch:
+
+jobs:
+  forward:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install packages
+        run: pip install requests beautifulsoup4
+
+      - name: Run the script
+        env:
+          EITAA_CHANNEL: ${{ secrets.EITAA_CHANNEL }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
+        run: python main.py
